@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>semana 2</h1>
-    <a href="index.html">voltar</a>
-</body>
+    <title>Atividades de Lab de Eng de Software</title>
+  </head>
+  <body>
+    <h1>Cadastro de itens</h1>
+
+    <form id="form">
+      <label for="item">Item:</label>
+      <input type="text" id="item" name="item">
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <ol id="lista"></ol>
+
+    <script>
+      let form = document.getElementById('form');
+      let itemInput = document.getElementById('item');
+      let lista = document.getElementById('lista');
+      let itens = [];
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let item = itemInput.value;
+        itens.push(item);
+        itens.sort();
+        lista.innerHTML = '';
+        itens.forEach((item) => {
+          var li = document.createElement('li');
+          li.textContent = item;
+          lista.appendChild(li);
+        });
+        itemInput.value = '';
+      });
+    </script>
+  </body>
 </html>
