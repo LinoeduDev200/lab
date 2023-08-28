@@ -48,10 +48,8 @@
 
 <script>
   function isPalindrome(text) {
-    // Remover espaços e converter para letras minúsculas
-    text = text.replace(/\s/g, '').toLowerCase();
     
-    // Comparar a string original com sua inversão
+    text = text.replace(/\s/g, '').toLowerCase();
     return text === text.split('').reverse().join('');
   }
 
