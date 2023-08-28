@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trabalho de lab Eng de Sofware</title>
+</head>
+<body>
+    <h1>Hoje é:</h1>
+    <p id="data"></p>
+
+    <script>
+        
+        let dataAtual = new Date();
+
+        
+    var options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long'};
+        let dataFormatada = dataAtual.toLocaleDateString('pt-BR', options);
+
+        
+        let elementoData = document.getElementById('data');
+        elementoData.textContent = dataFormatada;
+    </script>
+<h1>Que horas são?</h1>
+
+<div id="clock"></div>
+
+<script>
+    
+  function updateClock() {
+    let now = new Date();
+    let hours = String(now.getHours()).padStart(2, '0');
+    let minutes = String(now.getMinutes()).padStart(2, '0');
+    let seconds = String(now.getSeconds()).padStart(2, '0');
+
+    let clockElement = document.getElementById('clock');
+    clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    
+    
+    setTimeout(updateClock, 1000);
+  }
+
+  
+  updateClock();
+</script>
+<br>
+<label for="inputText">Digite uma palavra ou frase:</label>
+<input type="text" id="inputText">
+<button onclick="checkPalindrome()">Verificar</button>
+
+<script>
+  function isPalindrome(text) {
+    // Remover espaços e converter para letras minúsculas
+    text = text.replace(/\s/g, '').toLowerCase();
+    
+    // Comparar a string original com sua inversão
+    return text === text.split('').reverse().join('');
+  }
+
+  function checkPalindrome() {
+    const inputText = document.getElementById('inputText').value;
+
+    if (isPalindrome(inputText)) {
+      alert(`${inputText} é um palíndromo!`);
+    } else {
+      alert(`${inputText} não é um palíndromo.`);
+    }
+  }
+</script>
+
+</body>
+</html>
