@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Aluno e Professor</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+  <h1>Cadastro </h1>
+  <h4>Informações Pessoais</h4>
+  <form  class="form" id="Cadastro" >
+    
+    <div class="section">
+
+      <label class="control-label"  for="nome">Nome:</label>
+      <input class="tf" type="text" id="nome" placeholder="Digite seu nome completo"><br><br>
+
+
+      <label class="control-label" for="email">Email:</label>
+      <input class="tf" type="email" id="email" placeholder="Digite seu email"><br><br>
+
+      <label class="control-label"  for="data_nascimento">Data de Nascimento:</label>
+      <input type="date" id="data_nascimento" placeholder="dd/mm/aaaa"><br><br>
+    </div>
+    <div class="section">
+      <label class="control-label" for="telefoneFixo">Telefone Fixo:</label>
+      <input type="tel" id="telefoneFixo" name="telefoneFixo" placeholder="(xx) xxxx-xxxx"><br><br>
+
+      <label class="control-label" for="celular">Celular:</label>
+      <input type="tel" id="celular" name="celular" placeholder="(xx) xxxxx-xxxx"><br><br>
+    
+    <label class="control-label" for="tipo">Selecionar:</label>
+    <select id="tipo" required>
+      <option value="aluno">Aluno</option>
+      <option value="professor">Professor</option>
+    </select><br><br>
+  </div>
+</form>
+<form class="form">
+    <div class="section" id="cursoContainer">
+      <label class="control-label" for="curso">Curso:</label>
+      <input class="tr" type="text" id="curso" placeholder="Digite seu curso"><br><br>
+    </div>
+
+    <div class="section" id="areaAtuacaoContainer">
+
+      <label class="control-label" for="area_atuacao">Área de Atuação:</label>
+      <input class="tr" type="text" id="area_atuacao" placeholder="Digite sua Área de Atuação"><br><br>
+
+      <label class="control-label" for="link_lattes">Link do Lattes:</label>
+      <input class="tr" type="url" id="link_lattes" placeholder="Digite o link para sua Lattes">
+    </div>
+    <div class="section" >
+      <label class="control-label" for="matricula" >Matrícula:</label>
+      <input class="tr" type="text" id="matricula" name="matricula" placeholder="Digite sua Matrícula"><br><br>
+
+    </div>
+  
+    </form>
+    <form class="form-botao" style="margin-top: 10px" id="Cadastro">
+
+    <div  >
+      <button class="botaoEnviar" type="submit">Enviar</button>
+    
+      <button class="botaoRedefinir" type="reset" >Redefinir</button>
+    </div>
+ 
+  </form>
+
+
+  <script>
+    class Pessoa {
+      constructor(nome, sobrenome, email, data_nascimento) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.email = email;
+        this.data_nascimento = data_nascimento;
+      }
+
+      nomeCompleto() {
+        return `${this.nome} ${this.sobrenome}`;
+      }
+    }
+
+    class Aluno extends Pessoa {
+      constructor(nome, sobrenome, email, data_nascimento, curso) {
+        super(nome, sobrenome, email, data_nascimento);
+        this.curso = curso;
+      }
+    }
+
+    class Professor extends Pessoa {
+      constructor(nome, sobrenome, email, data_nascimento, area_atuacao, link_lattes) {
+        super(nome, sobrenome, email, data_nascimento);
+        this.area_atuacao = area_atuacao;
+        this.link_lattes = link_lattes;
+      }
+    }
+
+   let form = document.getElementById('cadastroForm');
+   let tipoSelect = document.getElementById('tipo');
+   let cursoContainer = document.getElementById('cursoContainer');
+   let areaAtuacaoContainer = document.getElementById('areaAtuacaoContainer');
+   let linkLattesContainer = document.getElementById('linkLattesContainer');
+
+    tipoSelect.addEventListener('change', () => {
+      cursoContainer.style.display = tipoSelect.value === 'aluno' ? 'block' : 'none';
+      areaAtuacaoContainer.style.display = tipoSelect.value === 'professor' ? 'block' : 'none';
+     // linkLattesContainer.style.display = tipoSelect.value === 'professor' ? 'block' : 'none';
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      let nome = document.getElementById('nome').value;
+      let sobrenome = document.getElementById('sobrenome').value;
+      let email = document.getElementById('email').value;
+      let data_nascimento = document.getElementById('data_nascimento').value;
+
+      if (tipoSelect.value === 'aluno') {
+        let curso = document.getElementById('curso').value;
+        let matricula = document.getElementById('matricula').value;
+        let aluno = new Aluno(nome, sobrenome, email, data_nascimento, curso, matricula);
+
+      } else if (tipoSelect.value === 'professor') {
+        let area_atuacao = document.getElementById('area_atuacao').value;
+        let link_lattes = document.getElementById('link_lattes').value;
+        let matricula = document.getElementById('matricula').value;
+        let professor = new Professor(nome, sobrenome, email, data_nascimento, area_atuacao, matricula, link_lattes);
+
+      }
+    });
+  </script>
+</body>
+
+</html>

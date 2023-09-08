@@ -1,0 +1,68 @@
+.form {
+    display: flex;
+    width: center ;
+    background-color: rgb(245, 177, 50);
+     }
+  
+  .form .section {
+    flex-grow: auto;
+    flex-direction: column;
+    padding: 15px;
+    margin-top: 10px;
+    width: 80%;
+  }
+ h1  {
+    color: aquamarine;
+ }
+ h4 {
+  color: aqua;
+ }
+  body {
+    background-color: rgb(61, 62, 63);
+  }
+  .control-label {
+    display: block;
+    width: 100%;
+    margin-bottom: 7px;
+    
+  }
+.tf{
+  width:60% !important;} 
+.tr{
+    width:40% !important;}
+
+
+
+
+.boton {
+  object-position: center;
+}
+.form-botao {
+  
+    
+    text-align: center;
+    padding: 5px 5px;
+    font-size: 14px #eceeec; 
+   
+    
+    
+}
+.botaoRedefinir {
+  width: -10px;
+  text-align: center ;
+  padding: 5px 15px;
+  font-size: 15px  ;
+  text-emphasis-color: rgb(239, 241, 239);
+  background-color: #f51818;
+  color: rgb(245, 241, 241);
+  
+  
+}
+.botaoEnviar {
+  width: -10px;
+  text-align: center ;
+  padding: 5px 15px;
+  font-size: 15px  ;
+  background-color: green;
+  color: rgb(245, 241, 241);
+}
