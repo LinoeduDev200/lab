@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Contador de Pessoas</title>
+	<link rel="stylesheet" href="styles5.css">
+</head>
+<body>
+	
+	<div class="contadores" id="contador" style="text-align: center;">
+		<h3>Contagem Total</h3>
+	    <output class="btn3" id="total">0</output><br><br>
+		<img  id="mulher" src="mulher.jpeg" alt="mulher">
+		<button class="btn1" id="addMulher">+</button>
+		<button class="btn2" id="remMulher">-</button>
+		<output class="btn3" id="countMulher">0</output>
+		
+         
+		<img  id="homem" src="homem.jpeg" alt="homem"  >
+		<button class="btn1"id="addHomem">+</button>
+		<button class="btn2" id="remHomem">-</button>
+		<output class="btn3" id="countHomem">0</output>
+		
+	</div>
+
+	
+    <script>
+        
+        let total = 0;
+        let countHomem = 0;
+        let countMulher = 0;
+
+        
+        function updateCounters() {
+            document.getElementById("total").textContent = total;
+            document.getElementById("countHomem").textContent = countHomem;
+            document.getElementById("countMulher").textContent = countMulher;
+        }
+
+        function addHomem() {
+            countHomem++;
+            total++;
+            updateCounters();
+        }
+
+        function remHomem() {
+            if (countHomem > 0) {
+                countHomem--;
+                total--;
+                updateCounters();
+            }
+        }
+
+        function addMulher() {
+            countMulher++;
+            total++;
+            updateCounters();
+        }
+
+        function remMulher() {
+            if (countMulher > 0) {
+                countMulher--;
+                total--;
+                updateCounters();
+            }
+        }
+
+        
+        document.getElementById("addHomem").addEventListener("click", addHomem);
+        document.getElementById("remHomem").addEventListener("click", remHomem);
+        document.getElementById("addMulher").addEventListener("click", addMulher);
+        document.getElementById("remMulher").addEventListener("click", remMulher);
+    </script>
+</body>
+</html>

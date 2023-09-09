@@ -1,0 +1,36 @@
+
+		
+		img {
+			width: 200px;
+			height: 200px;
+			
+            margin-top: 10px;
+			margin-bottom: 0px;
+            text-align: center;
+			
+		}
+		.btn1 {
+			text-align: start;
+			font-size: 30px;
+			cursor: pointer;
+			border-radius: 30px;
+			background-color: green;
+			
+		}
+		.btn2 {
+			
+			font-size: 30px;
+			cursor: pointer;
+			border-radius: 30px;
+			background-color: red;
+		}
+		.btn3 {
+			color:blanchedalmond;
+			font-size: 30px;
+			cursor: pointer;
+			border-bottom-color: 300px;
+			background-color: rgb(14, 10, 243);
+		}
+        
+       
+        
