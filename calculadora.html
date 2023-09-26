@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   
+
+<head>
+
+    <link rel="stylesheet" href="cal.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+   
+</head>
+
+<body>
+    <div id="calculadora" class="calculator"></div>
+
+    <script>
+      
+        function createCalculator() {
+            let calculadora = document.getElementById('calculadora'); 
+            
+
+            
+            let resultInput = document.createElement('input');
+            resultInput.type = 'text';
+            resultInput.id = 'result';
+            calculadora.appendChild(resultInput);
+            
+           
+            
+            for (let i = 1; i <= 9; i++) {
+                let numberButton = createButton(i.toString(), 'number');
+                calculadora.appendChild(numberButton);
+            }
+
+            
+            let zeroButton = createButton('0', 'number');
+            
+            calculadora.appendChild(zeroButton);
+
+            
+            let decimalButton = createButton('.', 'number');
+            calculadora.appendChild(decimalButton);
+
+            let operators = ['+', '-', '*', '/'];
+            
+            for (let i = 0; i < operators.length; i++) {
+                let operatorButton = createButton(operators[i], 'operator');
+                calculadora.appendChild(operatorButton);
+            }
+
+           
+            let percentButton = createButton('%', 'operator');
+            calculadora.appendChild(percentButton);
+
+            
+            let equalButton = createButton('=', 'equal');
+            calculadora.appendChild(equalButton);
+
+           
+            let clearButton = createButton('C', 'clear');
+           
+            calculadora.appendChild(clearButton);
+           
+        }
+
+       
+        function createButton(text, type) {
+            let button = document.createElement('button');
+            button.textContent = text;
+            button.classList.add(type);
+            button.onclick = buttonClick;
+            return button;
+        }
+
+       
+        function buttonClick() {
+            let buttonValue = this.textContent;
+            let resultInput = document.getElementById('result');
+
+            if (buttonValue === '=') {
+                try {
+                    resultInput.value = eval(resultInput.value);
+                } catch (error) {
+                    resultInput.value = 'Erro';
+                }
+            } else if (buttonValue === 'C') {
+                resultInput.value = '';
+            } else {
+                resultInput.value += buttonValue;
+            }
+        }
+
+        
+        window.onload = createCalculator;
+    </script>
+</body>
+</html>
